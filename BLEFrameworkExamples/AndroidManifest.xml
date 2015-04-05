@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.uqu.sensysframework.ble.examples"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="18" />
+
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+	
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Required by TransferManager -->
+    
+    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    
+    <application
+        android:name="com.uqu.sensysframework.commons.ApplicationContext"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        
+        <receiver android:name="com.uqu.sensysframework.ble.AbstractBLEManager"></receiver>
+        
+        <activity
+            android:name="com.uqu.sensysframework.ble.examples.ListExample"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:name="com.uqu.sensysframework.ble.ProximityService" android:enabled="true"/>
+    </application>
+
+</manifest>
